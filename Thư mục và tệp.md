@@ -7,7 +7,7 @@ Bảng sau cho thấy tổng quan về các thư mục quan trọng(theo quy đ�
 | Thư mục	    |Mô tả                                                                                                      |
 |---------------|-----------------------------------------------------------------------------------------------------------|
 |/              |Thư mục root. Nơi bắt đầu của các hệ thống cây file                                                        |
-|
+|/bin           |Tại đây, bạn tìm thấy các chương trình thực thi cần thiết để sửa chữa hệ thống ở chế độ khắc phục sự cố. Thư mục này cần thiết trong quá trình khởi động|
 |
 |
 |

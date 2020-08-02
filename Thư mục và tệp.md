@@ -16,7 +16,7 @@ Bảng sau cho thấy tổng quan về các thư mục quan trọng(theo quy đ�
 |/media,/mnt |Các thư mục được sử dụng để gắn các thiết bị trong hệ thống cây file
 |/opt	|Thư mục này được sử dụng cho các gói tùy chọn, nó có thể cài đặt trong máy chủ của bạn
 |/proc|	Thông tin về các tiến trình đang chạy sẽ được lưu trong /proc dưới dạng một hệ thống file thư mục mô phỏng. Đây là một cấu trúc hệ thống tập tin cho phép truy cập vào thông tin kernel|
-/root	Thư mục home của thư mục root. Chỉ có root user mới có có quyền ghi trong thư mục này.
-/run	Chứa tiến trình và thông tin cụ thể của người dung, nó được tạo ra từ lần khởi động cuối cùng
+|/root|	Thư mục home của thư mục root. Chỉ có root user mới có có quyền ghi trong thư mục này.|
+|/run |Chứa tiến trình và thông tin cụ thể của người dung, nó được tạo ra từ lần khởi động cuối cùng|
  
 

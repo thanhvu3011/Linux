@@ -55,6 +55,25 @@ Ngoài các thư mục này, bạn có thể tìm thấy máy chủ có các th�
 -	**Mount** on: Thư mục mà thiết bị hiện được gắn vào.
 *Lưu ý: khi sử dụng lệnh df, kích thước được báo cáo bằng kibibytes. Tùy chọn -m sẽ hiển thị chúng bằng mebibytes và sử dụng -h sẽ sử dụng định dạng có thể đọc được của con người trong KiB, MiB, GiB, TiB hoặc PiB*
 
+#Quản lý các file
+Là quản trị viên, bạn cần có khả năng thực hiện các tác vụ quản lý file. Những nhiệm vụ này bao gồm:
+-	Làm việc với các ký tự đại diện
+-	Quản lý và làm việc với các thư mục
+-	Làm việc với các đường dẫn tuyệt đối và tương đối(absolute and relative)
+-	Liệt kê các tập tin và thư mục
+-	Sao chép tập tin và thư mục
+-	Di chuyển tập tin và thư mục
+-	Xóa các tập tin và thư mục
+
+## Làm việc với các ký tự đại diện (Wildcards)
+Khi làm việc với các tệp, sử dụng ký tự đại diện có thể giúp công việc của bạn dễ dàng hơn rất nhiều. Ký tự đại diện là một tính năng hệ vỏ giúp bạn tham khảo nhiều tệp một cách dễ dàng.
+Bảng tổng quan :
+
+|Wildcards|	Cách sử dụng|
+|*|	Đề cập đến một số lượng không giới hạn của tất cả các nhân vật. (ví dụ: ls *, hiển thị tất cả các tệp trong thư mục hiện tại (ngoại trừ những tệp có tên bắt đầu bằng dấu chấm)).
+|?|	Được sử dụng để chỉ một nhân vật cụ thể có thể là bất kỳ nhân vật nào.Ví dụ ls c?t nó sẽ phù hợp với cat cũng như cut|
+|[auto]|	Đề cập đến một ký tự có thể được chọn từ phạm vi được chỉ định giữa các dấu ngoặc vuông. ls c[auo]t sẽ phù hợp với cat, cut và cot.|
+
 
 
 

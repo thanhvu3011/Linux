@@ -70,6 +70,7 @@ Khi làm việc với các tệp, sử dụng ký tự đại diện có thể g
 Bảng tổng quan :
 
 |Wildcards|	Cách sử dụng|
+|---------|--------------------------------------------------------------|
 |*|	Đề cập đến một số lượng không giới hạn của tất cả các nhân vật. (ví dụ: ls *, hiển thị tất cả các tệp trong thư mục hiện tại (ngoại trừ những tệp có tên bắt đầu bằng dấu chấm)).
 |?|	Được sử dụng để chỉ một nhân vật cụ thể có thể là bất kỳ nhân vật nào.Ví dụ ls c?t nó sẽ phù hợp với cat cũng như cut|
 |[auto]|	Đề cập đến một ký tự có thể được chọn từ phạm vi được chỉ định giữa các dấu ngoặc vuông. ls c[auo]t sẽ phù hợp với cat, cut và cot.|

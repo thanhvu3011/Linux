@@ -99,7 +99,8 @@ Khi làm việc với tên tệp tương đối, đôi khi rất hữu ích khi 
 **TIP: Nếu bạn chưa quen với Linux, việc hiểu tên tệp tương đối không phải lúc nào cũng dễ dàng. Có một cách giải quyết dễ dàng. Chỉ cần chắc chắn rằng bạn luôn làm việc với tên đường dẫn tuyệt đối. Nó gõ nhiều hơn, nhưng nó dễ hơn và do đó, bạn sẽ ít mắc lỗi hơn.**
 
 ##Lập danh sách tập tin và thư mục
-Trong khi làm việc với các tệp và thư mục, sẽ hữu ích nếu bạn có thể hiển thị nội dung của thư mục hiện tại. Để làm điều này, bạn có thể sử dụng lệnh **ls**. Nếu được sử dụng mà không có đối số, **ls** hiển thị nội dung của thư mục hiện tại. Một số đối số phổ biến làm cho làm việc với ls dễ dàng hơn
+Trong khi làm việc với các tệp và thư mục, sẽ hữu ích nếu bạn có thể hiển thị nội dung của thư mục hiện tại. Để làm điều này, bạn có thể sử dụng lệnh **ls**. Nếu được sử dụng mà không có đối số, **ls** hiển thị nội dung của thư mục hiện tại. Một số đối số phổ biến làm cho làm việc với ls dễ dàng hơn.
+
 Bảng tổng quan về ls
 |Lệnh|	Cách sử dụng|
 |-------|--------------------|
@@ -108,6 +109,52 @@ Bảng tổng quan về ls
 |ls -lrt|	Đây là một lệnh rất hữu ích. Nó hiển thị các lệnh được sắp xếp và ngày sửa đổi. Bạn sẽ thấy các tập tin được sửa đổi gần đây nhất trong danh sách này.|
 |ls -d|	Hiển thị tên của các thư mục, không phải nội dung của tất cả các thư mục khớp với các ký tự đại diện đã được sử dụng với lệnh ls|
 |ls -R|	Hiển thị nội dung của thư mục hiện tại, thêm vào đó là tất cả các thư mục con của nó, đó là đệ quy(Recursively) xuống tất cả các thư mục con|
+
+**TIP: Một tệp ẩn trên Linux là một tệp có tên bắt đầu bằng dấu chấm. Thử câu lệnh sau: touch .hidden. Sau đó gõ ls, bạn sẽ chưa thấy nó. Gõ ls –a, bạn sẽ thấy**
+Khi sử dụng **ls** và **ls -l**, bạn sẽ thấy các tệp được mã hóa màu. Các màu khác nhau được sử dụng cho các loại tệp khác nhau giúp phân biệt giữa chúng dễ dàng hơn. Tuy nhiên, đừng tập trung quá nhiều vào chúng, vì màu sắc được sử dụng là kết quả của một cài đặt biến, chúng có thể khác nhau trong các vỏ Linux khác nhau hoặc trên các máy chủ Linux khác nhau.
+
+## Sao chép tập tin và thư mục
+Để tổ chức các tệp trên máy chủ của bạn, bạn sẽ thường xuyên sao chép các tệp. Lệnh **cp** giúp bạn làm như vậy. Sao chép một tập tin không khó: Chỉ cần sử dụng **cp /path/to/ file /path/to/destination**. Ví dụ, để sao chép tệp **/etc/hosts** vào thư mục **/tmp**, hãy sử dụng **cp/etc/hosts/tmp**. Điều này dẫn đến các máy chủ tệp được ghi vào **/tmp**
+Với lệnh **cp**, bạn cũng có thể sao chép toàn bộ thư mục con, cùng với nội dung của nó và mọi thứ bên dưới nó. Để làm như vậy, sử dụng tùy chọn **–R**, viết tắt của Recursive. (Bạn cũng sẽ thấy tùy chọn -R với nhiều lệnh Linux khác). Để sao chép thư mục **/etc** và mọi thứ trong đó vào thư mục **/tmp**, bạn sẽ sử dụng lệnh:**cp -R/etc/tmp**
+Trong khi sử dụng lệnh **cp**, quyền và các thuộc tính khác của tệp sẽ được xem xét. Nếu không có tùy chọn bổ sung, bạn có nguy cơ không được sao chép. Nếu bạn muốn đảm bảo rằng bạn giữ các quyền hiện tại, hãy sử dụng tùy chọn **-a**, **cp** sẽ hoạt động ở chế độ lưu trữ. Tùy chọn này đảm bảo rằng các quyền và tất cả các tệp khác sẽ được giữ trong khi sao chép. Vì vậy, để sao chép trạng thái chính xác của thư mục chính của bạn và mọi thứ trong đó vào thư mục **/tmp**, hãy sử dụng lệnh: **cp -a ~ /tmp**.
+
+Một trường hợp đặc biệt khi làm việc với **cp** là các tập tin ẩn. Theo mặc định, các tập tin ẩn không được sao chép. Có ba giải pháp để làm việc với các tập tin ẩn:
+-	**cp /somedir/.* /tmp** điều này sao chép tất cả các tệp có tên bắt đầu bằng dấu chấm (các tệp ẩn) thành /tmp. Nó đưa ra một thông báo lỗi cho các thư mục có tên bắt đầu bằng dấu chấm trong /somedir, bởi vì tùy chọn -R không được sử dụng
+-	**cp -a / somedir /.**   điều này sao chép toàn bộ thư mục /somedir, bao gồm cả nội dung của nó, vào thư mục hiện tại. Vì vậy, kết quả là một thư mục con somedir sẽ được tạo trong thư mục hiện tại.
+-	**cp -a / somedir /. .**  điều này sao chép tất cả các tệp, thường và ẩn, vào thư mục hiện tại
+
+## Di chuyển tệp
+Để di chuyển tập tin, bạn sử dụng lệnh **mv**. Lệnh này sẽ xóa tệp khỏi vị trí hiện tại của nó và đặt nó vào vị trí mới. Bạn cũng có thể sử dụng nó để đổi tên một tệp (trong thực tế, không có gì khác hơn là sao chép và xóa tệp gốc). Hãy cùng xem một số ví dụ:
+-	**mv myfile /tmp** di chuyển tệp myfile từ thư mục hiện tại sang /tmp
+-	**mkdir somefiles**; **mv somefiles /tmp** đầu tiên tạo một thư mục có tên somefiles và sau đó di chuyển thư mục này sang /tmp. Lưu ý rằng điều này cũng hoạt động nếu thư mục chứa các tập tin.
+-	**mv myfile mynewfile** Đổi tên tệp myfile thành mynewfile.
+
+## Xóa tệp
+Nhiệm vụ quản trị tập tin phổ biến cuối cùng là xóa tập tin. Để xóa các tập tin và thư mục, bạn sử dụng lệnh **rm**. Khi được sử dụng trên một tệp duy nhất, tệp sẽ bị xóa. Bạn cũng có thể sử dụng nó trên các thư mục có chứa các tập tin. Để làm như vậy, thêm tùy chọn **-r**, một lần nữa là viết tắt của recursive.
+**NOTE: Nhiều lệnh có một tùy chọn tạo hành vi đệ quy. Trên một số lệnh bạn sử dụng tùy chọn -R, trên các lệnh khác bạn sử dụng tùy chọn -r. Điều đó thật khó hiểu, nhưng nó chỉ là như vậy.**
+
+Trên RHEL 7, lệnh **rm** sẽ nhắc xác nhận. Nếu bạn không thích điều đó, bạn có thể sử dụng tùy chọn -f. Hãy chắc chắn rằng bạn biết những gì bạn đang làm khi sử dụng tùy chọn này, bởi vì sau khi sử dụng nó, không có cách nào khác ngoài băng dự phòng
+Exercise 3: Làm việc với tệp
+Trong bài tập này, bạn làm việc với các tiện ích quản lý tệp phổ biến. Hình 3.1 cung cấp tổng quan về cấu trúc thư mục mà bạn đang làm việc trong bài tập này.
+
+![alt](https://i.imgur.com/hkfdwWp.png)
+ 
+1. Mở shell như một người dùng bình thường                                                                                           
+2. Gõ pwd. Bạn nên ở trong thư mục /home/$USER.
+3. Gõ mfdir newfiles và mkdir oldfiles. Gõ ls và bạn sẽ thấy các thư mục bạn vừa tạo
+4. Nhập touch newfiles/.hidden và touch newfiles / unsidden. Điều này tạo ra hai tập tin trong thư mục newfiles
+5. Gõ cd oldfiles 
+6. Gõ ls -al điều này chỉ hiển thị hai mục:. , đề cập đến thư mục hiện tại; và .. , đề cập đến mục ở trên này (thư mục cha).
+7. Nhập ls -al ../newfiles. Trong lệnh này, bạn đang sử dụng tên đường dẫn tương đối để chỉ nội dung của thư mục /home/$ USER/newfiles
+8. Sử dụng lệnh cp -a newfiles/..
+9. Gõ ls -a. Bạn thấy rằng bạn đã tạo các tệp mới thư mục con vào thư mục oldfiles
+10. Đảm bảo rằng bạn vẫn ở /home/$ USER/oldfiles và nhập rm –rf newfiles
+11. Bây giờ sử dụng lệnh cp -a newfiles/*.. Nhập ls -l để xem những gì đã được sao chép ngay bây giờ. Bạn có thể thấy rằng tập tin ẩn chưa được sao chép
+12. Để đảm bảo rằng bạn sẽ sao chép các tệp ẩn cũng như các tệp thông thường, hãy sử dụng cp –a newfiles/. .
+13. Xác nhận lệnh làm việc này, sử dụng ls -al. Bạn có thể nhận thấy rằng các tệp ẩn cũng như các tệp thông thường đã được sao chép thành công.
+
+
+
 
 
 

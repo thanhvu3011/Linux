@@ -133,25 +133,46 @@ Một trường hợp đặc biệt khi làm việc với **cp** là các tập 
 Nhiệm vụ quản trị tập tin phổ biến cuối cùng là xóa tập tin. Để xóa các tập tin và thư mục, bạn sử dụng lệnh **rm**. Khi được sử dụng trên một tệp duy nhất, tệp sẽ bị xóa. Bạn cũng có thể sử dụng nó trên các thư mục có chứa các tập tin. Để làm như vậy, thêm tùy chọn **-r**, một lần nữa là viết tắt của recursive.
 **NOTE: Nhiều lệnh có một tùy chọn tạo hành vi đệ quy. Trên một số lệnh bạn sử dụng tùy chọn -R, trên các lệnh khác bạn sử dụng tùy chọn -r. Điều đó thật khó hiểu, nhưng nó chỉ là như vậy.**
 
-Trên RHEL 7, lệnh **rm** sẽ nhắc xác nhận. Nếu bạn không thích điều đó, bạn có thể sử dụng tùy chọn -f. Hãy chắc chắn rằng bạn biết những gì bạn đang làm khi sử dụng tùy chọn này, bởi vì sau khi sử dụng nó, không có cách nào khác ngoài băng dự phòng
+Trên RHEL 7, lệnh **rm** sẽ nhắc xác nhận. Nếu bạn không thích điều đó, bạn có thể sử dụng tùy chọn **-f**. Hãy chắc chắn rằng bạn biết những gì bạn đang làm khi sử dụng tùy chọn này, bởi vì sau khi sử dụng nó, không có cách nào khác ngoài băng dự phòng
 Exercise 3: Làm việc với tệp
 Trong bài tập này, bạn làm việc với các tiện ích quản lý tệp phổ biến. Hình 3.1 cung cấp tổng quan về cấu trúc thư mục mà bạn đang làm việc trong bài tập này.
 
 ![alt](https://i.imgur.com/hkfdwWp.png)
  
 1. Mở shell như một người dùng bình thường                                                                                           
-2. Gõ pwd. Bạn nên ở trong thư mục /home/$USER.
-3. Gõ mfdir newfiles và mkdir oldfiles. Gõ ls và bạn sẽ thấy các thư mục bạn vừa tạo
-4. Nhập touch newfiles/.hidden và touch newfiles / unsidden. Điều này tạo ra hai tập tin trong thư mục newfiles
-5. Gõ cd oldfiles 
-6. Gõ ls -al điều này chỉ hiển thị hai mục:. , đề cập đến thư mục hiện tại; và .. , đề cập đến mục ở trên này (thư mục cha).
-7. Nhập ls -al ../newfiles. Trong lệnh này, bạn đang sử dụng tên đường dẫn tương đối để chỉ nội dung của thư mục /home/$ USER/newfiles
-8. Sử dụng lệnh cp -a newfiles/..
-9. Gõ ls -a. Bạn thấy rằng bạn đã tạo các tệp mới thư mục con vào thư mục oldfiles
-10. Đảm bảo rằng bạn vẫn ở /home/$ USER/oldfiles và nhập rm –rf newfiles
-11. Bây giờ sử dụng lệnh cp -a newfiles/*.. Nhập ls -l để xem những gì đã được sao chép ngay bây giờ. Bạn có thể thấy rằng tập tin ẩn chưa được sao chép
-12. Để đảm bảo rằng bạn sẽ sao chép các tệp ẩn cũng như các tệp thông thường, hãy sử dụng cp –a newfiles/. .
-13. Xác nhận lệnh làm việc này, sử dụng ls -al. Bạn có thể nhận thấy rằng các tệp ẩn cũng như các tệp thông thường đã được sao chép thành công.
+2. Gõ **pwd**. Bạn nên ở trong thư mục **/home/$USER**.
+3. Gõ **mfdir newfiles** và **mkdir oldfiles**. Gõ **ls** và bạn sẽ thấy các thư mục bạn vừa tạo
+4. Nhập **touch newfiles/.hidden** và **touch newfiles/unsidden**. Điều này tạo ra hai tập tin trong thư mục newfiles
+5. Gõ **cd oldfiles** 
+6. Gõ **ls -al** điều này chỉ hiển thị hai mục:**.** , đề cập đến thư mục hiện tại; và **..** , đề cập đến mục ở trên này (thư mục cha).
+7. Nhập **ls -al ../newfiles**. Trong lệnh này, bạn đang sử dụng tên đường dẫn tương đối để chỉ nội dung của thư mục /home/$ USER/newfiles
+8. Sử dụng lệnh **cp -a newfiles/.**.
+9. Gõ **ls -a**. Bạn thấy rằng bạn đã tạo các tệp mới thư mục con vào thư mục oldfiles
+10. Đảm bảo rằng bạn vẫn ở /home/$ USER/oldfiles và nhập **rm –rf newfiles**
+11. Bây giờ sử dụng lệnh **cp -a newfiles/*.**. Nhập **ls -l** để xem những gì đã được sao chép ngay bây giờ. Bạn có thể thấy rằng tập tin ẩn chưa được sao chép
+12. Để đảm bảo rằng bạn sẽ sao chép các tệp ẩn cũng như các tệp thông thường, hãy sử dụng **cp –a newfiles/.** .
+13. Xác nhận lệnh làm việc này, sử dụng **ls -al**. Bạn có thể nhận thấy rằng các tệp ẩn cũng như các tệp thông thường đã được sao chép thành công.
+
+# Sử dụng các liên kết
+Liên kết trên Linux giống như các bí danh được gán cho một tệp. Có liên kết tượng trưng, và có liên kết cứng. Để hiểu một liên kết, bạn cần biết một chút về tổ chức của hệ thống tệp trong Linux.
+## Liên kết cứng
+Linux lưu trữ dữ liệu quản trị về các tập tin trong các inode. Mọi tệp trên Linux đều có một inode và trong inode, thông tin quan trọng về tệp được lưu trữ:
+-	Khối dữ liệu nơi nội dung tệp được lưu trữ
+-	Ngày tạo, truy cập và sửa đổi
+-	Quyền của tệp
+-	Chủ sở hữu của tệp
+Chỉ một phần thông tin quan trọng không được lưu trong inode: tên. Tên được lưu trữ trong thư mục và mỗi tên tệp sẽ biết địa chỉ inode nào để truy cập vào thông tin tệp. Thật thú vị khi biết rằng một inode không biết tệp có tên gì; nó chỉ biết có bao nhiêu tệp được liên kết với inode. Những tên này được gọi là liên kết cứng.
+Khi bạn tạo một tập tin, bạn đặt tên cho nó. Về cơ bản, tên này là một liên kết cứng. Trên hệ thống tệp Linux, nhiều liên kết cứng có thể được tạo thành một tệp. Điều này có thể hữu ích, vì nó cho phép bạn truy cập tệp từ nhiều vị trí khác nhau. Một số hạn chế áp dụng cho các liên kết cứng:
+-	Tất cả liên kết cứng phải tồn tại trên cùng một thiết bị.
+-	Không thể tạo liên kết cứng đến thư mục.
+-	Số lượng bí danh của tập tin gốc. Khi tên cuối cùng được xóa, nội dung cũng được loại bỏ.
+Điều hay ho về liên kết cứng là không có sự khác biệt tồn tại giữa liên kết cứng thứ nhất và liên kết cứng thứ hai. Cả hai chỉ là các liên kết cứng và nếu liên kết cứng đầu tiên cho một tệp bị xóa, điều đó không ảnh hưởng đến các liên kết cứng khác vẫn còn tồn tại. Hệ điều hành Linux sử dụng các liên kết trên nhiều vị trí để làm các tệp dễ tiếp cận hơn.
+
+## Hiểu vể các liên kết tượng trưng
+Một liên kết tượng trưng (còn được gọi là liên kết mềm) không liên kết trực tiếp đến inode mà là tên của tệp. Điều này làm cho các liên kết tượng trưng linh hoạt hơn nhiều, nhưng nó cũng có một số nhược điểm. Ưu điểm của liên kết tượng trưng là chúng có thể liên kết đến các tệp trên các thiết bị khác, cũng như trên các thư mục. Nhược điểm chính là khi tệp gốc bị xóa, liên kết tượng trưng trở nên không hợp lệ và không hoạt động.
+Hình 3.2 cho thấy một tổng quan sơ đồ về các nút, liên kết cứng và các liên kết tượng trưng liên quan đến nhau
+
+![alt](Imgur::doLogin: Missing "access_token".)
 
 
 

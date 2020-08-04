@@ -39,5 +39,24 @@ từ việc Linux không thể khởi động, kernel và các file liên quan c
 -	**/home**: Thư mục này thường nằm trên một thiết bị chuyên dụng vì lý do bảo mật. Bởi đặt nó trên một thiết bị chuyên dụng, nó có thể được gắn với các tùy chọn cụ thể để tăng cường bảo mật cho máy chủ. Khi cài đặt lại hệ điều hành, việc có các thư mục chính trong một hệ thống file riêng là một lợi thế. Các thư mục home sau đó có thể tồn tại khi cài đặt lại hệ thống.
 -	**/usr**: Thư mục này chỉ chứa các tệp hệ điều hành, mà bình thường người dùng không cần bất kỳ quyền ghi. Đặt nó trên một thiết bị chuyên dụng cho phép quản trị viên cấu hình nó dưới dạng read-only mount
 
+Ngoài các thư mục này, bạn có thể tìm thấy máy chủ có các thư mục khác được gắn trên các phân vùng hoặc khối lượng chuyên dụng. Sau cùng, tùy theo quyết định của quản trị viên để quyết định thư mục nào được dành riêng thiết bị.
+Để có cái nhìn tổng quan về tất cả các thiết bị và điểm gắn kết của chúng, bạn có thể sử dụng các lệnh khác nhau:
+-	Lệnh **mount** cho biết tổng quan về tất cả các thiết bị được gắn. Để có được thông tin này, tệp / Proc / mounts được đọc, trong đó kernel giữ thông tin về tất cả các mount hiện tại. Nó cũng hiển thị các giao diện kernel, điều này có thể dẫn đến một danh sách dài các thiết bị được gắn kết được hiển thị
+-	Lệnh **df -Th** được thiết kế để hiển thị dung lượng đĩa trống trên các thiết bị được gắn; nó bao gồm hầu hết các hệ thống gắn kết. Bởi vì nó sẽ xem xét được tất cả các hệ thống file được gắn kết, đây là một lệnh thuận tiện để có được cái nhìn tổng quan về các hệ thống gắn kết hiện tại. Tùy chọn -h tóm tắt đầu ra của lệnh theo cách có thể đọc được của người dùng và tùy chọn -T cho biết loại hệ thống tệp nào được sử dụng trên các giá trị gắn kết khác nhau.
+-	Lệnh **findmnt** hiển thị các mount và mối quan hệ tồn tại giữa các mount khác nhau. Vì đầu ra của lệnh **mount** hơi dài, bạn có thể thích đầu ra của **findmnt**
+
+
+### Đầu ra của df được hiển thị trong bảy cột:
+-	**Filesystem**: Tên của tệp thiết bị tương tác với thiết bị đĩa được sử dụng. Các thiết bị thực bắt đầu bằng /dev (dùng để chỉ thư mục được sử dụng để lưu trữ các tệp thiết bị). Bạn cũng có thể thấy một vài thiết bị tmpfs. Đây là những thiết bị kernel được sử dụng để tạo một hệ thống tệp tạm thời trong RAM
+-	**Type**: Loại hệ thống file đã được sử dụng
+-	**Used**: Dung lượng của ổ đĩa mà thiết bị đang sử dụng
+-	**Avail**: Dung lượng ổ đĩa không sử dụng
+-	**Use%**: Phần trăm của thiết bị hiện đang được sử dụng.
+-	**Mount** on: Thư mục mà thiết bị hiện được gắn vào.
+*Lưu ý: khi sử dụng lệnh df, kích thước được báo cáo bằng kibibytes. Tùy chọn -m sẽ hiển thị chúng bằng mebibytes và sử dụng -h sẽ sử dụng định dạng có thể đọc được của con người trong KiB, MiB, GiB, TiB hoặc PiB*
+
+
+
+
  
 

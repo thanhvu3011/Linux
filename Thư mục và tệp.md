@@ -172,7 +172,12 @@ Khi bạn tạo một tập tin, bạn đặt tên cho nó. Về cơ bản, tên
 Một liên kết tượng trưng (còn được gọi là liên kết mềm) không liên kết trực tiếp đến inode mà là tên của tệp. Điều này làm cho các liên kết tượng trưng linh hoạt hơn nhiều, nhưng nó cũng có một số nhược điểm. Ưu điểm của liên kết tượng trưng là chúng có thể liên kết đến các tệp trên các thiết bị khác, cũng như trên các thư mục. Nhược điểm chính là khi tệp gốc bị xóa, liên kết tượng trưng trở nên không hợp lệ và không hoạt động.
 Hình 3.2 cho thấy một tổng quan sơ đồ về các nút, liên kết cứng và các liên kết tượng trưng liên quan đến nhau
 
-![alt](Imgur::doLogin: Missing "access_token".)
+![alt](https://i.imgur.com/iP566wP.png)
+
+## Tạo Liên Kết
+Sử dụng lệnh **ln** để tạo liên kết. Nó sử dụng cùng thứ tự các tham số như cp và mv, đầu tiên bạn đề cập đến tên nguồn, tiếp theo là tên đích. Nếu bạn muốn tạo một liên kết tượng trưng, bạn sử dụng tùy chọn -s, sau đó bạn chỉ định tệp hoặc thư mục nguồn và tệp đích. Tuy nhiên có một hạn chế quan trọng, để có thể tạo liên kết cứng, bạn phải là chủ sở hữu của mục mà bạn muốn liên kết. Đây là một hạn chế bảo mật mới đã được giới thiệu trong RHEL 7.
+Bảng sau cho thấy một ví dụ về cách dung lệnh **ln**
+
 
 
 

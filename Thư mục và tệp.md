@@ -75,6 +75,41 @@ Bảng tổng quan :
 |?|	Được sử dụng để chỉ một nhân vật cụ thể có thể là bất kỳ nhân vật nào.Ví dụ ls c?t nó sẽ phù hợp với cat cũng như cut|
 |[auto]|	Đề cập đến một ký tự có thể được chọn từ phạm vi được chỉ định giữa các dấu ngoặc vuông. ls c[auo]t sẽ phù hợp với cat, cut và cot.|
 
+## Quản lý và làm việc với các thư mục
+Để tổ chức các tệp(files), Linux hoạt động với các thư mục(directories) (còn được gọi là folders). Bạn đã đọc về một số thư mục mặc định theo định nghĩa của FHS. Khi người dùng bắt đầu tạo tập tin và lưu trữ chúng trên máy chủ, việc cung cấp cấu trúc thư mục cũng rất hợp lý. Là một quản trị viên, bạn phải có khả năng biết về cấu trúc thư mục
+Exercise 2: Làm việc với thư mục
+Trong Ex này bạn học cách làm việc với thư mục
+1. Mở một Shell như một người dung. Gõ **cd**. Tiếp theo, gõ **pwd**, viết tắt của thư mục làm việc print. Bạn sẽ thấy rằng bạn hiện đang ở trong thư mục nhà của bạn, một thư mục có tên /home/< tên người dùng >
+2. Gõ **touch file1**. Lệnh này để tạo một tệp rỗng tên là file1 trên máy chủ của bạn. Vì bạn đang ở thư mục home nên có thể tạo ra bất cứ tệp nào bạn muốn
+3. Gõ **cd /**. Điều này thay đổi thư mục hiện tại thành thư mục gốc (/). Gõ **touch file2** bạn sẽ thấy tin nhắn “permission denied”. Người dùng thông thường chỉ có thể tạo tệp trong thư mục nơi họ có quyền cần thiết.
+4. Gõ **cd /tmp**. Điều này mang bạn đến thư mục **/tmp**, nơi mà người dùng có giấy phép để viết. Gõ lại **touch file2** bạn có thể thấy tạo ra tệp file2 trong thư mục **/tmp** (trừ khi đã có tệp file2 trong thư mục này được tạo ra trước đó)
+5. Gõ **cd** để đưa bạn trở lại thư mục nhà của bạn.
+6. Gõ **mkdir files**. Điều này tạo ra thư mục tên files trong thư mục hiện tại của bạn. Lệnh **mkdir** sử dụng tên của thư mục cần được tạo như một tên đường dẫn tương đối, nó liên quan đến vị trí bạn đang ở.
+7. Gõ **mkdir /home/$USER/files**. Trong lệnh này, bạn đang sử dụng biến $USER, thay thế cho tên người dùng hiện tại của bạn. Đối số hoàn chỉnh của mkdir là một tên tệp tuyệt đối cho các tệp thư mục bạn đang cố gắng tạo. Bởi vì thư mục này đã tồn tại, bạn sẽ nhận được một tin nhắn “file exists”.
+8. Gõ **rmdir files** để xóa các tệp thư mục bạn vừa tạo. Lệnh rmdir cho phép bạn xóa các thư mục, nhưng nó chỉ hoạt động nếu thư mục trống và không chứa bất kỳ tệp nào
+
+## Làm việc với các tên đường dẫn tuyệt đối và tương đối
+Trong phần trước, bạn đã làm việc với các lệnh cd và mkdir. Bạn đã sử dụng các lệnh này để duyệt qua cấu trúc thư mục. Bạn cũng đã làm việc với một tên tệp tương đối và một tên tệp tuyệt đối.
+Tên tệp tuyệt đối hoặc tên đường dẫn tuyệt đối là tham chiếu đường dẫn đầy đủ đến tệp hoặc thư mục bạn muốn làm việc. Tên đường dẫn này bắt đầu với thư mục gốc, theo sau là tất cả các thư mục con cho đến tên tệp thực tế. Bất kể thư mục hiện tại của bạn là gì, tên tệp tuyệt đối sẽ luôn hoạt động. Ví dụ về tên tệp tuyệt đồi là /home/lisa/file1.
+Một tên tệp tương đối liên quan đến thư mục hiện tại như được hiển thị với lệnh **pwd**. Nó chỉ chứa các yếu tố được yêu cầu để có được từ thư mục hiện tại cho đến mục bạn cần. Giả sử rằng thư mục hiện tại của bạn là /home (như được hiển thị bởi lệnh pwd). Khi bạn đề cập đến tên tệp tương đối lisa/file1, bạn đang đề cập đến tên tệp tuyệt đối /home/lisa/file1
+Khi làm việc với tên tệp tương đối, đôi khi rất hữu ích khi di chuyển lên một cấp trong cấu trúc phân cấp. Hãy tưởng tượng bạn đã đăng nhập với quyền root và bạn muốn sao chép tệp /home/lisa/file1 vào thư mục /home/lara. Một vài giải pháp có thể dùng:
+-	Sử dụng **cp /home/lisa/file1 /home/lara**. Bởi vì trong lệnh này bạn đang sử dụng tên đường dẫn tuyệt đối, lệnh này sẽ hoạt động mọi lúc
+-	Đảm bảo thư mục hiện tại của bạn là **/home** và sử dụng **cp lisa/file1 lara**. Lưu ý rằng cả tệp nguồn và tệp đích được gọi là tên tệp tương đối vì lý do đó không bắt đầu bằng /
+-	Nếu thư mục hiện tại được đặt thành /home/lisa, bạn cũng có thể sử dụng **cp file1 ../lara**. Trong lệnh này, tên của tệp đích sử dụng .., có nghĩa là tăng lên một cấp. .. được theo sau bởi /lara, do đó, toàn bộ tên của tệp mục tiêu sẽ được hiểu là một lần đi lên một cấp độ (vì vậy bạn sẽ ở /home), và từ đó, hãy tìm thư mục con /lara
+**TIP: Nếu bạn chưa quen với Linux, việc hiểu tên tệp tương đối không phải lúc nào cũng dễ dàng. Có một cách giải quyết dễ dàng. Chỉ cần chắc chắn rằng bạn luôn làm việc với tên đường dẫn tuyệt đối. Nó gõ nhiều hơn, nhưng nó dễ hơn và do đó, bạn sẽ ít mắc lỗi hơn.**
+
+##Lập danh sách tập tin và thư mục
+Trong khi làm việc với các tệp và thư mục, sẽ hữu ích nếu bạn có thể hiển thị nội dung của thư mục hiện tại. Để làm điều này, bạn có thể sử dụng lệnh **ls**. Nếu được sử dụng mà không có đối số, **ls** hiển thị nội dung của thư mục hiện tại. Một số đối số phổ biến làm cho làm việc với ls dễ dàng hơn
+Bảng tổng quan về ls
+|Lệnh|	Cách sử dụng|
+|-------|--------------------|
+|ls -l|	Hiển thị một danh sách, bao gồm thông tin về các thuộc tính tệp, chẳng hạn như ngày tạo và quyền|
+|ls -a|	Hiển thị tất cả các tệp, bao gồm các tệp ẩn.|
+|ls -lrt|	Đây là một lệnh rất hữu ích. Nó hiển thị các lệnh được sắp xếp và ngày sửa đổi. Bạn sẽ thấy các tập tin được sửa đổi gần đây nhất trong danh sách này.|
+|ls -d|	Hiển thị tên của các thư mục, không phải nội dung của tất cả các thư mục khớp với các ký tự đại diện đã được sử dụng với lệnh ls|
+|ls -R|	Hiển thị nội dung của thư mục hiện tại, thêm vào đó là tất cả các thư mục con của nó, đó là đệ quy(Recursively) xuống tất cả các thư mục con|
+
+
 
 
 

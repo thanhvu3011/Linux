@@ -227,23 +227,36 @@ The Tape ARchiver (tar) được sử dụng để lưu trữ tệp. Mặc dù b
 -	Trích xuất một kho lưu trữ
 
 ### Tạo một kho lưu trữ
-Để tạo một kho lưu trữ, bạn sử dụng lệnh tar -cf archivename.tar /files-you-want-to-archive. Nếu bạn muốn xem những gì đang xảy ra, hãy sử dụng tùy chọn -v. Để đặt tệp vào kho lưu trữ, bạn cần ít nhất quyền đọc đối với tệp. Sử dụng     tar -cvf /root/homes.tar /home như là người dùng root để viết nội dung của thư mục /home và mọi thứ bên dưới nó vào tệp homes.tar trong thư mục /root. Lưu ý, thứ tự trong các tùy chọn này là quan trọng.
+Để tạo một kho lưu trữ, bạn sử dụng lệnh **tar -cf archivename.tar /files-you-want-to-archive**. Nếu bạn muốn xem những gì đang xảy ra, hãy sử dụng tùy chọn **-v**. Để đặt tệp vào kho lưu trữ, bạn cần ít nhất quyền đọc đối với tệp. Sử dụng   **tar -cvf /root/homes.tar /home** như là người dùng root để viết nội dung của thư mục /home và mọi thứ bên dưới nó vào tệp homes.tar trong thư mục /root. Lưu ý, thứ tự trong các tùy chọn này là quan trọng.
 Ban đầu, tar không sử dụng dấu gạch ngang (-) trước các tùy chọn của nó. Hiện đại việc triển khai tar sử dụng dấu gạch ngang, cũng như tất cả các chương trình Linux khác, nhưng chúng vẫn cho phép sử dụng không có dấu gạch ngang để tương thích ngược.
-Trong khi quản lý tài liệu lưu trữ bằng tar, cũng có thể thêm tệp vào kho lưu trữ hiện có hoặc cập nhật kho lưu trữ. Để thêm một tập tin vào một kho lưu trữ, bạn sử dụng các tùy chọn -r. Ví dụ tar –rvf /root/homes.tar /etc/hosts để thêm tệp /etc / hosts vào kho lưu trữ
-Để cập nhật tệp lưu trữ hiện có, bạn có thể sử dụng tùy chọn -u. Vì vậy, sử dụng tar -uvf /root/homes.tar /home để viết các phiên bản mới hơn của tất cả các tệp trong /home vào kho lưu trữ
+Trong khi quản lý tài liệu lưu trữ bằng tar, cũng có thể thêm tệp vào kho lưu trữ hiện có hoặc cập nhật kho lưu trữ. Để thêm một tập tin vào một kho lưu trữ, bạn sử dụng các tùy chọn -r. Ví dụ **tar –rvf /root/homes.tar /etc/hosts** để thêm tệp /etc / hosts vào kho lưu trữ
+Để cập nhật tệp lưu trữ hiện có, bạn có thể sử dụng tùy chọn -u. Vì vậy, sử dụng **tar -uvf /root/homes.tar /home** để viết các phiên bản mới hơn của tất cả các tệp trong /home vào kho lưu trữ
 ### Giám sát và giải nén tập tin Tar
-Trước khi giải nén một tập tin, thật tốt khi biết những gì có thể được mong đợi. Tùy chọn -t có thể được sử dụng để tìm hiểu. Ví dụ tar -tvf /root/homes.tar để xem nội dung của kho lưu trữ tar.
+Trước khi giải nén một tập tin, thật tốt khi biết những gì có thể được mong đợi. Tùy chọn -t có thể được sử dụng để tìm hiểu. Ví dụ **tar -tvf /root/homes.tar** để xem nội dung của kho lưu trữ tar.
 TIP: Đó là một thực hành tốt để tạo các tệp lưu trữ với một phần mở rộng như .tar hoặc .tgz để có thể dễ dàng nhận ra chúng, nhưng không phải ai cũng làm điều đó. Nếu bạn nghĩ rằng một tệp là một kho lưu trữ tar, nhưng bạn không chắc chắn, hãy sử dụng lệnh file. Ví dụ, nếu bạn nhập file somefile, lệnh file sẽ phân tích nội dung của nó và hiển thị trên dòng lệnh đó là loại tệp nào
-Để giải nén nội dung của kho lưu trữ, hãy sử dụng tar -cvf /archivename. Điều này trích xuất các kho lưu trữ trong thư mục hiện tại. Điều đó có nghĩa là nếu bạn đang ở /root khi gõ tar -xvf /root/homes.tar, và tệp chứa thư mục /home, sau khi giải nén, bạn sẽ có một thư mục /root/home mới chứa toàn bộ nội dung của tập tin. Đây có thể không phải là thư mục bạn muốn thực hiện. Có hai giải pháp để đặt nội dung được giải nén ngay tại nơi bạn muốn có:
+Để giải nén nội dung của kho lưu trữ, hãy sử dụng **tar -cvf /archivename**. Điều này trích xuất các kho lưu trữ trong thư mục hiện tại. Điều đó có nghĩa là nếu bạn đang ở /root khi gõ **tar -xvf /root/homes.tar**, và tệp chứa thư mục /home, sau khi giải nén, bạn sẽ có một thư mục /root/home mới chứa toàn bộ nội dung của tập tin. Đây có thể không phải là thư mục bạn muốn thực hiện. Có hai giải pháp để đặt nội dung được giải nén ngay tại nơi bạn muốn có:
 -	Trước khi giải nén tệp lưu trữ, hãy cd vào thư mục mà bạn muốn giải nén tệp
--	Sử dụng tùy chọn -C /targetdir để chỉ định thư mục đích mà bạn muốn giải nén tệp. Nếu bạn muốn đặt nội dung của tệp /root/homes.tar vào thư mục / tmp, bạn có thể sử dụng tar -xvf homes.tar -C /tmp
-Ngoài việc trích xuất toàn bộ tệp lưu trữ, còn có thể trích xuất một tệp ra khỏi kho lưu trữ. Để làm như vậy, sử dụng tar -xvf /archivename.tar /file-you-want-to-extract. Ví dụ: nếu kho lưu trữ của bạn chứa tệp /etc/hosts mà bạn muốn giải nén, hãy sử dụng **tar -xvf /root/etc.tar /etc/hosts**.
+-	Sử dụng tùy chọn **-C /targetdir** để chỉ định thư mục đích mà bạn muốn giải nén tệp. Nếu bạn muốn đặt nội dung của tệp /root/homes.tar vào thư mục / tmp, bạn có thể sử dụng tar -xvf homes.tar -C /tmp
+Ngoài việc trích xuất toàn bộ tệp lưu trữ, còn có thể trích xuất một tệp ra khỏi kho lưu trữ. Để làm như vậy, sử dụng0**tar -xvf /archivename.tar /file-you-want-to-extract**. Ví dụ: nếu kho lưu trữ của bạn chứa tệp /etc/hosts mà bạn muốn giải nén, hãy sử dụng **tar -xvf /root/etc.tar /etc/hosts**.
 ### Sử dụng nén
 Các chương trình nén cho phép bạn tạo các tệp chiếm ít dung lượng đĩa hơn bằng cách loại bỏ sự dư thừa. Trong tất cả các ví dụ về lệnh tar mà bạn đã thấy cho đến nay, không một byte nào được nén. Ban đầu, sau khi tạo tệp lưu trữ, nó phải được nén bằng một tiện ích nén riêng, chẳng hạn như gzip hoặc bzip2. Sau khi tạo home.tar, bạn có thể nén nó bằng gzip home.tar. gzip thay thế home.tar bằng phiên bản nén của nó, home.tar. gz, cần ít không gian hơn
 Thay thế cho việc sử dụng gzip, bạn có thể sử dụng bzip2. Ban đầu, bzip2 sử dụng thuật toán mã hóa hiệu quả hơn, dẫn đến kích thước tệp nhỏ hơn, nhưng hiện tại nó hầu như không tạo ra sự khác biệt với kết quả của gzip
 Để giải nén các tệp đã được nén bằng gzip hoặc bzip2, bạn có thể sử dụng các tiện ích gunzip và bunzip2
 Thay thế cho việc sử dụng các tiện ích này từ dòng lệnh, bạn có thể bao gồm các tùy chọn -z (gzip) hoặc -j (bzip2) trong khi tạo tệp lưu trữ bằng tar. Điều này sẽ ngay lập tức nén kích thước tập tin. Không cần phải sử dụng các tùy chọn này trong khi giải nén. Tiện ích tar sẽ nhận ra nội dung được nén và tự động giải nén nó cho bạn. Bảng sau đưa ra một cái nhìn tổng quan về các tùy chọn tar quan trọng nhất.
 Tổng quan về tar
+|Tùy chọn|	Cách dùng|
+|---------|------------|
+|c|	Tạo một kho lưu trữ|
+|v|	Hiển thị đầu ra đầy đủ trong khi tar đang làm việc.|
+|f|	Được sử dụng để chỉ định tên của kho lưu trữ tar sẽ được sử dụng. Nếu không dùng tùy chọn này, đích mặc định là STDIN cho -x và STDOUT cho -c.|
+|t|	Hiển thị nội dung của kho lưu trữ|
+|z|	Nén / giải nén tệp lưu trữ trong khi tạo nó, bằng cách sử dụng gzip|
+|j|	Nén / giải nén tệp lưu trữ trong khi tạo nó, bằng cách sử dụng bzip2|
+|x|	Giải nén kho lưu trữ|
+|u|	Cập nhật kho lưu trữ, chỉ các tệp mới hơn sẽ được ghi vào kho lưu trữ|
+|C|	Thay đổi thư mục làm việc trước khi thực hiện lệnh|
+|r|	Đóng dấu tập tin vào kho lưu trữ|
+
 
 
 

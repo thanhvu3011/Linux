@@ -176,7 +176,78 @@ Hình 3.2 cho thấy một tổng quan sơ đồ về các nút, liên kết c�
 
 ## Tạo Liên Kết
 Sử dụng lệnh **ln** để tạo liên kết. Nó sử dụng cùng thứ tự các tham số như cp và mv, đầu tiên bạn đề cập đến tên nguồn, tiếp theo là tên đích. Nếu bạn muốn tạo một liên kết tượng trưng, bạn sử dụng tùy chọn -s, sau đó bạn chỉ định tệp hoặc thư mục nguồn và tệp đích. Tuy nhiên có một hạn chế quan trọng, để có thể tạo liên kết cứng, bạn phải là chủ sở hữu của mục mà bạn muốn liên kết. Đây là một hạn chế bảo mật mới đã được giới thiệu trong RHEL 7.
+
 Bảng sau cho thấy một ví dụ về cách dung lệnh **ln**
+|Lệnh|	Giải thích|
+|-----|------------|
+|ln /etc/host .|	Tạo một liên kết đến tập tin /etc/hosts trong thư mục hiện tại|
+|ln –s /etc/hosts .|	Tạo một liên kết tượng trưng đến tập tin /etc/hosts trong thư mục hiện tại|
+|ln -s /home /tmp	|Tạo một liên kết tượng trưng đến thư mục /home trong thư mục /tmp|
+
+Lệnh **ls** sẽ tiết lộ xem một tập tin có phải là một liên kết hay không:
+-	Trong đầu ra của lệnh **ls -l**, ký tự đầu tiên là *l* nếu tệp là một liên kết tượng trưng
+-	Nếu một tệp là một liên kết tượng trưng, đầu ra của **ls -l** hiển thị tên của mục mà nó liên kết đến sau tên tệp
+-	Nếu một tệp là một liên kết cứng, ls -l hiển thị bộ đếm liên kết cứng. 
+
+**NOTE:Lệnh ls theo mặc định là một bí danh, sử dụng các màu khác nhau khi hiển thị đầu ra của ls, \ ở phía trước lệnh khiến bí danh không được sử dụng.**
+##Xóa liên kết
+Loại bỏ các liên kết có thể nguy hiểm. Để cho bạn thấy lý do tại sao, hãy xem xét cá bước sau đây:
+1. Tạo ra thư mục test trong thư mục home: **mkdir ~/test**
+2. Sao chép tất cả các tệp có tên bắt đầu bằng a, b, c, d, e từ /etc vào thư mục này: **cp /etc/[a-e]* ~/test**
+3. Đảm bảo rằng bạn đang ở trong thư mục home, bằng cách sử dụng lệnh **cd**
+4. Gõ **ln –s test link**
+5. Sử dụng lệnh **rm link**. Điều này loại bỏ các liên kết (không sử dụng -r hoặc -f để xóa liên kết, ngay cả khi chúng là thư mục con)
+6. Gõ **ls –l**. Bạn sẽ thấy liên kết mềm đã bị xóa
+7. Hãy để làm điều đó một lần nữa. Nhập **ln –s test link** để tạo lại liên kết.
+8. Gõ **rm –rf link/**
+9. Gõ **ls**. Bạn sẽ thấy thư mục link vẫn còn tồn tại
+10. Gõ **ls test/** bạn sẽ thấy thư mục test trống
+
+Exercise 4: Làm việc với liên kết mềm và liên kết cứng
+1. Mở shell như một người dùng thông thường (nonroot)
+2. Từ thư mục home, hãy nhập **ln/etc/passwd.**  (đảm bảo rằng lệnh kết thúc bằng dấu chấm). Lệnh này cung cấp cho bạn một hoạt động của người dùng không được phép lỗi vì bạn không phải là chủ sở hữu của /etc/passwd
+ 3. Gõ **ln -s /etc/passwd.** . (một lần nữa, hãy chắc chắn rằng lệnh kết thúc bằng dấu chấm). Nó hoạt động, bạn không cần phải là chủ sở hữu để tạo một liên kết mềm
+4. Gõ **ln -s /etc/hosts** (Lần này không có dấu chấm ở cuối lệnh.) Bạn sẽ nhận thấy lệnh này cũng hoạt động. Nếu mục tiêu không được chỉ định, liên kết được tạo trong thư mục hiện tại
+5. Gõ **touch newfile** và tạo một liên kết cứng đến tập tin này bằng cách sử dụng **ln newfile linkfile**
+6. Gõ **ls –l**, chú ý bộ đếm liên kết cho newfile và linkfile, hiện được đặt thành 2
+7. Gõ **ln -s newfile symlinkfile** để tạo liên kết mềm đến newfile.
+8. Gõ **rm newfile**
+9. Gõ **cat symlinkfile**. Bạn sẽ nhận được “no such file or directory”, lỗi như vậy vì không thể tìm thấy tập tin gốc.
+10. Gõ **cat linkedfile**. Và không có vấn đề gì xảy ra
+11. Gõ **ls -l** và xem cách hiển thị symlinkfile. Và cùng xem linkedfile, giờ đây bộ đếm liên kết được đặt thành 1
+12. Gõ **ln linkedfile newfile**.
+13. Gõ **ls –l** một lần nữa. Bạn sẽ thấy rằng tình hình ban đầu đã được khôi phục
+
+# Làm việc với Lưu trữ và Nén tệp
+Một nhiệm vụ quan trọng khác liên quan đến tệp là quản lý tài liệu lưu trữ và tệp nén. Để tạo một kho lưu trữ các tệp trên Linux, lệnh tar thường được sử dụng. Lệnh này ban đầu được thiết kế để truyền phát tệp vào băng mà không nén bất kỳ tệp nào. Nếu bạn cũng muốn nén các tệp, một công cụ nén cụ thể phải được sử dụng hoặc bạn cần chỉ định một tùy chọn nén tệp lưu trữ trong khi nó được tạo. Trong phần này, bạn tìm hiểu cách làm việc với tài liệu lưu trữ và tệp nén
+## Quản lý lưu trữ với tar
+The Tape ARchiver (tar) được sử dụng để lưu trữ tệp. Mặc dù ban đầu được thiết kế để truyền phát tệp vào băng sao lưu, nhưng trong sử dụng hiện tại, tar được sử dụng chủ yếu để ghi tệp vào tệp lưu trữ. Bạn phải có khả năng thực hiện ba nhiệm vụ quan trọng với tar 
+-	Tạo một kho lưu trữ
+-	Liệt kê nội dung của một kho lưu trữ
+-	Trích xuất một kho lưu trữ
+
+### Tạo một kho lưu trữ
+Để tạo một kho lưu trữ, bạn sử dụng lệnh tar -cf archivename.tar /files-you-want-to-archive. Nếu bạn muốn xem những gì đang xảy ra, hãy sử dụng tùy chọn -v. Để đặt tệp vào kho lưu trữ, bạn cần ít nhất quyền đọc đối với tệp. Sử dụng     tar -cvf /root/homes.tar /home như là người dùng root để viết nội dung của thư mục /home và mọi thứ bên dưới nó vào tệp homes.tar trong thư mục /root. Lưu ý, thứ tự trong các tùy chọn này là quan trọng.
+Ban đầu, tar không sử dụng dấu gạch ngang (-) trước các tùy chọn của nó. Hiện đại việc triển khai tar sử dụng dấu gạch ngang, cũng như tất cả các chương trình Linux khác, nhưng chúng vẫn cho phép sử dụng không có dấu gạch ngang để tương thích ngược.
+Trong khi quản lý tài liệu lưu trữ bằng tar, cũng có thể thêm tệp vào kho lưu trữ hiện có hoặc cập nhật kho lưu trữ. Để thêm một tập tin vào một kho lưu trữ, bạn sử dụng các tùy chọn -r. Ví dụ tar –rvf /root/homes.tar /etc/hosts để thêm tệp /etc / hosts vào kho lưu trữ
+Để cập nhật tệp lưu trữ hiện có, bạn có thể sử dụng tùy chọn -u. Vì vậy, sử dụng tar -uvf /root/homes.tar /home để viết các phiên bản mới hơn của tất cả các tệp trong /home vào kho lưu trữ
+### Giám sát và giải nén tập tin Tar
+Trước khi giải nén một tập tin, thật tốt khi biết những gì có thể được mong đợi. Tùy chọn -t có thể được sử dụng để tìm hiểu. Ví dụ tar -tvf /root/homes.tar để xem nội dung của kho lưu trữ tar.
+TIP: Đó là một thực hành tốt để tạo các tệp lưu trữ với một phần mở rộng như .tar hoặc .tgz để có thể dễ dàng nhận ra chúng, nhưng không phải ai cũng làm điều đó. Nếu bạn nghĩ rằng một tệp là một kho lưu trữ tar, nhưng bạn không chắc chắn, hãy sử dụng lệnh file. Ví dụ, nếu bạn nhập file somefile, lệnh file sẽ phân tích nội dung của nó và hiển thị trên dòng lệnh đó là loại tệp nào
+Để giải nén nội dung của kho lưu trữ, hãy sử dụng tar -cvf /archivename. Điều này trích xuất các kho lưu trữ trong thư mục hiện tại. Điều đó có nghĩa là nếu bạn đang ở /root khi gõ tar -xvf /root/homes.tar, và tệp chứa thư mục /home, sau khi giải nén, bạn sẽ có một thư mục /root/home mới chứa toàn bộ nội dung của tập tin. Đây có thể không phải là thư mục bạn muốn thực hiện. Có hai giải pháp để đặt nội dung được giải nén ngay tại nơi bạn muốn có:
+-	Trước khi giải nén tệp lưu trữ, hãy cd vào thư mục mà bạn muốn giải nén tệp
+-	Sử dụng tùy chọn -C /targetdir để chỉ định thư mục đích mà bạn muốn giải nén tệp. Nếu bạn muốn đặt nội dung của tệp /root/homes.tar vào thư mục / tmp, bạn có thể sử dụng tar -xvf homes.tar -C /tmp
+Ngoài việc trích xuất toàn bộ tệp lưu trữ, còn có thể trích xuất một tệp ra khỏi kho lưu trữ. Để làm như vậy, sử dụng tar -xvf /archivename.tar /file-you-want-to-extract. Ví dụ: nếu kho lưu trữ của bạn chứa tệp /etc/hosts mà bạn muốn giải nén, hãy sử dụng **tar -xvf /root/etc.tar /etc/hosts**.
+### Sử dụng nén
+Các chương trình nén cho phép bạn tạo các tệp chiếm ít dung lượng đĩa hơn bằng cách loại bỏ sự dư thừa. Trong tất cả các ví dụ về lệnh tar mà bạn đã thấy cho đến nay, không một byte nào được nén. Ban đầu, sau khi tạo tệp lưu trữ, nó phải được nén bằng một tiện ích nén riêng, chẳng hạn như gzip hoặc bzip2. Sau khi tạo home.tar, bạn có thể nén nó bằng gzip home.tar. gzip thay thế home.tar bằng phiên bản nén của nó, home.tar. gz, cần ít không gian hơn
+Thay thế cho việc sử dụng gzip, bạn có thể sử dụng bzip2. Ban đầu, bzip2 sử dụng thuật toán mã hóa hiệu quả hơn, dẫn đến kích thước tệp nhỏ hơn, nhưng hiện tại nó hầu như không tạo ra sự khác biệt với kết quả của gzip
+Để giải nén các tệp đã được nén bằng gzip hoặc bzip2, bạn có thể sử dụng các tiện ích gunzip và bunzip2
+Thay thế cho việc sử dụng các tiện ích này từ dòng lệnh, bạn có thể bao gồm các tùy chọn -z (gzip) hoặc -j (bzip2) trong khi tạo tệp lưu trữ bằng tar. Điều này sẽ ngay lập tức nén kích thước tập tin. Không cần phải sử dụng các tùy chọn này trong khi giải nén. Tiện ích tar sẽ nhận ra nội dung được nén và tự động giải nén nó cho bạn. Bảng sau đưa ra một cái nhìn tổng quan về các tùy chọn tar quan trọng nhất.
+Tổng quan về tar
+
+
+
+
 
 
 

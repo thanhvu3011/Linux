@@ -37,7 +37,8 @@ tail -n filename.txt sẽ lấy ra n dòng cuối của văn bản.
 wc filename.txt
 ```
 ![alt]([img]https://i.imgur.com/jS3BMZJ.png[/img])
-   - sẽ nhận giá trị [ 15 20 86 của file thanh5.txt ] giá trị đầu là số dòng(line); giá trị thứ hai là số từ (word); giá trị thứ 3 là số ký tự(character); và cuối cùng là tên file.
+
+   - Sẽ nhận giá trị [ 15 20 86 của file thanh5.txt ] giá trị đầu là số dòng(line); giá trị thứ hai là số từ (word); giá trị thứ 3 là số ký tự(character); và cuối cùng là tên file.
    
 ```
 wc -l filename.txt

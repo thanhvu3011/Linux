@@ -64,15 +64,7 @@ wc -m filename.txt
 wc -L filename.txt 
 ```
    - prints độ dài của dòng dài nhất trong một file.
-   
-   - Để đếm số lượng thư mục :
-  
-```
-find . -type f | wc -l
-```
-     ![dem file](https://user-images.githubusercontent.com/68736233/89322915-2a912e80-d6af-11ea-94bc-4f0a597e4c36.png)
-
-		  
+   	  
 
  2.4 Lệnh cat : Lệnh này có tham số là tên file và option quyết định nó sẽ làm tác vụ gì.
    - Cấu trúc : cat [OPTION] [FILE] 
@@ -192,10 +184,8 @@ man sed
    
    ![workhard](https://user-images.githubusercontent.com/68736233/89334053-24577e00-d6c0-11ea-89a2-c817fdb126de.png)
    
-     - vd : Thay đổi Phuong thành PHUONG và lưu thành tệp mới 
+     - vd : Thay đổi Thanh thành PHUONG và lưu thành tệp mới 
 	 
-	 ![workhard](https://user-images.githubusercontent.com/68736233/89334053-24577e00-d6c0-11ea-89a2-c817fdb126de.png)
-
 
    
    

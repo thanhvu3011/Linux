@@ -13,31 +13,23 @@
 
 2.Các lệnh ( command ) trong file text :
 
- 2.1 Lệnh head ,tail : lấy ra một phần văn bản ở đầu hoặc cuối file
+ 2.1 Lệnh head ,tail : lấy ra một phần văn bản ở đầu hoặc cuối văn bản
  
 ```
-head -n 5 filename.txt sẽ lấy ra 5 dòng đầu của văn bản. 
+head -n filename.txt sẽ lấy ra n dòng đầu của văn bản. 
 ```
+![alt](https://i.imgur.com/HD5xOqm.png)
 
 ```   
-tail -n 3 filename.txt sẽ lấy ra 3 dòng cuối của văn bản.
+tail -n filename.txt sẽ lấy ra n dòng cuối của văn bản.
 ```
-   
-   ![head tail](https://user-images.githubusercontent.com/68736233/89208080-eab24480-d5e5-11ea-8a4f-b2f03e9dc771.png)
-
-  Để hiển thị dòng bạn cần tìm trong thư mục :
-  
-```
-head -10 /etc/passwd | tail -1
-```
-![1  dòng](https://user-images.githubusercontent.com/68736233/89320796-2f081800-d6ac-11ea-920a-e4cdcd5701ef.png)
-```
+![alt](https://i.imgur.com/hEOu2p5.png)
 
  2.2 Lệnh less : hiển thị văn bản của file 
     
    - Less: Mở các text file bằng các trang điều này cho phép đọc file text dễ dàng hơn.
    
-   ![pic 2](https://user-images.githubusercontent.com/68736233/89207346-c9048d80-d5e4-11ea-8434-f60c93dcbe49.png)  
+   ![alt](https://i.imgur.com/ML1mYuA.png)  
    
  2.3 Lệnh wc (wordcount) : thống kê, đếm số lượng dữ liệu có trong file
  

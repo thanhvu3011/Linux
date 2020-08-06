@@ -65,9 +65,6 @@ wc -L filename.txt
 ```
    - prints độ dài của dòng dài nhất trong một file.
    
-	  
-	 ![wc 1](https://user-images.githubusercontent.com/68736233/89208623-e63a5b80-d5e6-11ea-8279-67ad239572b7.png)
-
    - Để đếm số lượng thư mục :
   
 ```

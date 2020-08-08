@@ -6,13 +6,13 @@ Ví dụ thực tế: Một cơ quan có sử dụng Server cài hệ điều h�
 ##1. Phân quyền là như thế nào
 Một file hay thư mục trong hệ thống có 4 quyền cơ bản sau:
 
-a. Read (r): Đối với một file thì quyền Read chính là quyền được xem nội dung của file, còn đối với một folder thì quyền Read chính là quyền xem được danh sách các subfolder và file bên trong folder đó.
+- Read (r): Đối với một file thì quyền Read chính là quyền được xem nội dung của file, còn đối với một folder thì quyền Read chính là quyền xem được danh sách các subfolder và file bên trong folder đó.
 
-b. Write (w): Đối với một file thì quyền Write là cho phép thêm, sửa nội dùng file, còn đối với một folder thì Write cho phép thêm, xóa một subfolder hay file trong thư mục đó.
+- Write (w): Đối với một file thì quyền Write là cho phép thêm, sửa nội dùng file, còn đối với một folder thì Write cho phép thêm, xóa một subfolder hay file trong thư mục đó.
 
-c. Execute (x): Đây là quyền thực thi. Đối với một file thì Execute cho phép thực thi file trong trường hợp file này thuộc dạng program hoặc script, còn đối với một folder Execute cho phép cd vào thư mục này.
+- Execute (x): Đây là quyền thực thi. Đối với một file thì Execute cho phép thực thi file trong trường hợp file này thuộc dạng program hoặc script, còn đối với một folder Execute cho phép cd vào thư mục này.
 
-d. Deny (-): Không có quyền làm một thao tác gì đó đối với một file hay folder xác định.
+- Deny (-): Không có quyền làm một thao tác gì đó đối với một file hay folder xác định.
 
 - Ví dụ về quyền của một file và một folder:
 drwxr-xr-x. 2 root root     6 Aug  8 10:25 test
@@ -30,4 +30,13 @@ Nhưng đó chỉ là 1 trong kiểu biểu diễn quyền của tập tin, còn
 Quyền r được biểu diễn bằng số 4.
 Quyền w được biểu diễn bằng số 2.
 Quyền x được biểu diễn bằng số 1.
+Quyền - được biểu diễn bằng số 0.
+
+Nếu một đối tượng mà có đủ 3 quyền này thì bạn cứ lấy cả 3 cộng lại là  4 + 2 + 1 = 7, vậy quyền số 7 nghĩa là nó được phép đọc, sửa và thực thi file. Ví dụ như đoạn rw-rw-r-- thì mình có một phép tính như sau:
+  rw- tương đương với 4+2+0 =6
+  rw- tương đương với 4+2+0 =6
+  r-- tương đương với 4+0+0 =4
+Vậy kết luận rằng, đoạn rw-rw-r-- sẽ được biểu diễn bằng số là 664
+
+##2. Thay đổi phân quyền cho file/folder
 

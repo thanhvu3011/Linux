@@ -14,5 +14,20 @@ c. Execute (x): Đây là quyền thực thi. Đối với một file thì Execu
 
 d. Deny (-): Không có quyền làm một thao tác gì đó đối với một file hay folder xác định.
 
-- Ví dụ về quyền của một file và một folder
+- Ví dụ về quyền của một file và một folder:
+drwxr-xr-x. 2 root root     6 Aug  8 10:25 test
+-rw-r--r--. 1 root root     0 Aug  8 10:24 testfiles
+
+Vấn đề quan trọng ở đây là chúng ta sẽ phân tích các chỉ số phân quyền.
+
+rw-: Đối tượng thứ nhất chính là quyền dành cho user sở hữu nó.
+r--: Đối tượng thứ hai chính là quyền dành cho CÁC user thuộc group đang sở hữu nó.
+r--: Đối tượng thứ ba chính là quyền dành cho MỌI user không thuộc quyền sở hữu và không thuộc group sở hữu.
+Vậy cái đoạn rw-r--r-- nghĩa là “User root được phép đọc và sửa file, các user thuộc group root và những người còn lại là chỉ được đọc file“.
+
+Nhưng đó chỉ là 1 trong kiểu biểu diễn quyền của tập tin, còn 1 kiểu biểu diễn nữa đó là ở dạng số. Cụ thể:
+
+Quyền r được biểu diễn bằng số 4.
+Quyền w được biểu diễn bằng số 2.
+Quyền x được biểu diễn bằng số 1.
 

@@ -67,12 +67,27 @@ kiểu số: cũng giống như ở trên (644).
 
 - Kiểu số:
 Như đã giải thích ở trên
-vd: chmod 777 test
+Ví dụ: chmod 777 test
+
 - Kiểu ugo:
 Trong đó u là quyền của user sở hữu của tệp hay file
          g là quyền của các user thuộc group sở hữu tệp hay file
-         u là quyền của các user khác
-Vd: 
+         o là quyền của các user khác
+Ví dụ: 
+chmod u=rx testfiles
+chmod g=rw testfiles
+chmod o=rw testfiles
 
-
-
+Bạn có thể sửa đổi quyền cho nhiều lớp, chẳng hạn như ví dụ này cho chủ sở hữu có quyền đọc/ghi/thực thi nhưng nhóm và các người dùng khác chỉ có quyền đọc/thực thi:
+'''
+chmod u=rwx,g=rw,o=rw testfile
+'''
+Nhưng lợi ích của việc sử dụng kiểu ugo sẽ được thấy rõ khi bạn chỉ muốn thêm hoặc xóa quyền cho một hành động cụ thể đối với một lớp.
+Ví dụ, lệnh sau thêm quyền thực thi cho chủ sở hữu file:
+'''
+chmod u+x testfiles
+'''
+Và lệnh này loại bỏ quyền ghi và thực thi cho người dùng khác:
+'''
+chmod o-wx testfiles
+'''

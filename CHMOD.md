@@ -15,10 +15,13 @@ Một file hay thư mục trong hệ thống có 4 quyền cơ bản sau:
 - Deny (-): Không có quyền làm một thao tác gì đó đối với một file hay folder xác định.
 
 - Ví dụ về quyền của một file và một folder:
+
+'''
 drwxr-xr-x. 2 root root     6 Aug  8 10:25 test
 -rw-r--r--. 1 root root     0 Aug  8 10:24 testfiles
+'''
 
-Vấn đề quan trọng ở đây là chúng ta sẽ phân tích các chỉ số phân quyền.
+Ở đây là chúng ta sẽ phân tích các chỉ số phân quyền.
 
 rw-: Đối tượng thứ nhất chính là quyền dành cho user sở hữu nó.
 r--: Đối tượng thứ hai chính là quyền dành cho CÁC user thuộc group đang sở hữu nó.
@@ -38,5 +41,38 @@ Nếu một đối tượng mà có đủ 3 quyền này thì bạn cứ lấy c
   r-- tương đương với 4+0+0 =4
 Vậy kết luận rằng, đoạn rw-rw-r-- sẽ được biểu diễn bằng số là 664
 
-##2. Thay đổi phân quyền cho file/folder
+##2. Thay đổi quyền cho file/folder bằng lệnh chmod trong linux
+###Chmod là gì?
+Command này được dùng để đổi quyền của một file hoặc thư mục. Cơ bản, mỗi file có ba loại users tương tác với nó:
+
+|Loại|	Giải thích|
+|-----|-----------|
+|owner|	Người dùng đã tạo thành file hoặc thư mục đó|
+|group|	Tất cả người dùng thuộc cùng một group|
+|others|Tất cả người dùng khác, không phải owner hoặc những người dùng trong group.|
+
+Nếu bạn muốn loại user nào có quyền nào với file hoặc folder, thì bạn có thể thực thi lệnh chmod để điều khiển việc này theo ý bạn.Cấu trúc sử dụng lệnh này là:
+
+chmod (tùy chọn) (biểu diễn phân quyền) (tên file hoặc thư mục)
+Trong đó, mục (tùy chọn) là không bắt buộc, bao gồm các tùy chọn sau:
+-v: hiển thị báo cáo sau khi chạy lệnh. Nếu bạn chmod nhiều file/folder cùng lúc thì cứ mỗi lần nó đổi quyền của 1 file/folder xong là sẽ hiện báo cáo.
+-c: giống như trên, nhưng chỉ hiện khi nó đã làm xong tất cả.
+-f: set quyền trong cả trường hợp xảy ra lỗi, nếu có lỗi xảy ra nó cũng không thông báo.
+-R: nếu bạn CHMOD một folder thì kèm theo -R nghĩa là áp dụng luôn vào các file/folder nằm bên trong nó.
+--help: hiển thị thông báo trợ giúp.
+
+Ở phần [biểu diễn phân quyền], ban có thể biểu diễn bằng 2 kiểu:
+kiểu ugo: kiểu này sẽ phân quyền cho từng đối tượng phân quyền.
+kiểu số: cũng giống như ở trên (644).
+
+- Kiểu số:
+Như đã giải thích ở trên
+vd: chmod 777 test
+- Kiểu ugo:
+Trong đó u là quyền của user sở hữu của tệp hay file
+         g là quyền của các user thuộc group sở hữu tệp hay file
+         u là quyền của các user khác
+Vd: 
+
+
 

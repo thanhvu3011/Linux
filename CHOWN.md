@@ -15,6 +15,7 @@
 - Định danh của group thường sử dụng giá trị bắt đầu từ 500.
 
 #2.Các file dữ liệu
+
 ##2.1 /etc/passwd: Lưu thông tin tài khoản của người dùng
 – Khảo sát thông tin user   
 cat /etc/passwd
@@ -22,7 +23,7 @@ cat /etc/passwd | more
 => Mỗi user tạo ra được lưu trên một dòng
 Ví dụ: 
 
-![alt](https://sinhvientot.net/wp-content/uploads/2016/04/image001-1.gifhttps://sinhvientot.net/wp-content/uploads/2016/04/image001-1.gif)
+![alt](https://sinhvientot.net/wp-content/uploads/2016/04/image001-1.gif)
 
 Khi tạo một user thì mặc định linux tạo thêm một group primary cùng tên với user và chứa user đó.
 

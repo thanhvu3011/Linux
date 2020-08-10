@@ -26,12 +26,14 @@ Ví dụ:
 ![alt](https://sinhvientot.net/wp-content/uploads/2016/04/image001-1.gif)
 
 Khi tạo một user thì mặc định linux tạo thêm một group primary cùng tên với user và chứa user đó.
-
-– User có id = 0 thì đó là user có quyền root
+- User có id = 0 thì đó là user có quyền root
 
 id = 1 – 99: dùng cho system service
+
 id = 100 – 499: dùng cho system cài thêm
+
 id >=500: dùng cho user và group thường
+
 ## 2.2 /etc/shadow: Lưu thông tin password của user
 Ví dụ:
 '''

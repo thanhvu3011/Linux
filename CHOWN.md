@@ -112,20 +112,17 @@ sudo groupadd group1, group2, group3
 
 - Liệt kê danh sách User trong Groups
 
-'''
-
+'
 sudo groups
 sudo groups user1
-
-'''
+'
 
 -  Xóa 1 group
 
-'''
-
+'
 sudo groupdel group1
 
-'''
+'
 
 # 4.Lệnh CHOWN 
 

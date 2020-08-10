@@ -40,12 +40,17 @@ Ví dụ:
 nv1:$1$T4CJrUJC$hfkHtryc5TprrlKAqGNAr/:15013:0:99999:7:::
 '''
 – user name
+
 – password đã mã hóa
+
 – ngày đổi passwd sau cùng (1/1/1970 + số ngày đến ngày hôm nay)
+
 – 0: một ngày sau mới có thể đổi passwd
   1: không gia hạn đổi passwd
+
 – ngày hết hạn của passwd 
 ## 2.3 /etc/group: Lưu thông tin của group
+
 Thông tin 1 group trong file /etc/group như sau:
 
  [Group name] : [Group password] : [GID] : [Group members]
@@ -55,18 +60,56 @@ Thông tin 1 group trong file /etc/group như sau:
 
 
 # 3.Quản lý user và group
+
 ## 3.1 Quản lý user
+
 - useradd: tạo user
+
 Các option:
+
 -c: comment, tạo bí danh (chú thích)
+
 -d: home directory (thư mục cá nhân)
+
 -G: đưa user vào group
+
 -M: không tạo thư mục cá nhân
+
 -n: không tạo primary group, user tạo ra sẽ được đưa vào group users
+
 -s: chỉ định shell
+
 - passwd: đặt password cho user
+
 -l: lock user
+
 -u: unlock user
+
 -d: disable passwd
+
 - userdel: xóa user
+
 -r: xóa luôn thư mục các nhân
+
+## 3.2 Quản lý group
+
+- Tạo 1 group
+'''
+sudo groupadd group1
+'''
+
+- Tạo nhiều group
+'''
+sudo groupadd group1, group2, group3
+'''
+
+- Liệt kê danh sách User trong Groups
+'''
+sudo groups
+sudo groups user1
+'''
+
+-  Xóa 1 group
+'''
+sudo groupdel group1
+'''

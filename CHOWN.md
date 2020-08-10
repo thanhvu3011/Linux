@@ -34,6 +34,10 @@ id = 100 – 499: dùng cho system cài thêm
 
 id >=500: dùng cho user và group thường
 
+Thông tin của 1 user trong file /etc/passwd
+
+[username] :[x]:[UID]:[GID]:[Comment]:[Home directory]:[Default shell]
+ 
 ## 2.2 /etc/shadow: Lưu thông tin password của user
 Ví dụ:
 '''
@@ -94,22 +98,26 @@ Các option:
 ## 3.2 Quản lý group
 
 - Tạo 1 group
+
 '''
 sudo groupadd group1
 '''
 
 - Tạo nhiều group
+
 '''
 sudo groupadd group1, group2, group3
 '''
 
 - Liệt kê danh sách User trong Groups
+
 '''
 sudo groups
 sudo groups user1
 '''
 
 -  Xóa 1 group
+
 '''
 sudo groupdel group1
 '''

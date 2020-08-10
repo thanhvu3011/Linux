@@ -113,14 +113,18 @@ sudo groupadd group1, group2, group3
 - Liệt kê danh sách User trong Groups
 
 '''
+
 sudo groups
 sudo groups user1
+
 '''
 
 -  Xóa 1 group
 
 '''
+
 sudo groupdel group1
+
 '''
 
 # 4.Lệnh CHOWN 
@@ -129,13 +133,17 @@ sudo groupdel group1
 Để thay đổi owner của file (chủ sở hữu của file), lệnh cơ bản sẽ như sau:
 
 '''
-chown user filename(s)
+
+chown user filename
+
 '''
 
 Lấy ví dụ file trên là test.txt, chúng tôi thay đổi từ user sở hữu là root sang một user khác có tên là whales. Thực hiện lệnh như sau:
 
 '''
+
 chown whales test.txt
+
 '''
 
 Để kiểm tra thay đổi có được thực thi, bạn có thể dùng lại lệnh ls -l. Output sẽ hiện lên như sau:

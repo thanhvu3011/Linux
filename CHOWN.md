@@ -41,9 +41,9 @@ Thông tin của 1 user trong file /etc/passwd
  
 ## 2.2 /etc/shadow: Lưu thông tin password của user
 Ví dụ:
-'''
-nv1:$1$T4CJrUJC$hfkHtryc5TprrlKAqGNAr/:15013:0:99999:7:::
-'''
+
+**nv1:$1$T4CJrUJC$hfkHtryc5TprrlKAqGNAr/:15013:0:99999:7:::**
+
 – user name
 
 – password đã mã hóa
@@ -100,67 +100,42 @@ Các option:
 
 - Tạo 1 group
 
-'''
-sudo groupadd group1
-'''
+
+**sudo groupadd group1**
 
 - Tạo nhiều group
 
-'''
-sudo groupadd group1, group2, group3
-'''
+**sudo groupadd group1, group2, group3**
 
 - Liệt kê danh sách User trong Groups
-
-'
-sudo groups
-sudo groups user1
-'
+**sudo groups
+sudo groups user1**
 
 -  Xóa 1 group
 
-'
-sudo groupdel group1
-
-'
+**sudo groupdel group1**
 
 # 4.Lệnh CHOWN 
 
 ## 1.Chown cho Files – đổi quyền sở hữu của file
 Để thay đổi owner của file (chủ sở hữu của file), lệnh cơ bản sẽ như sau:
 
-'''
-
 chown user filename
-
-'''
 
 Lấy ví dụ file trên là test.txt, chúng tôi thay đổi từ user sở hữu là root sang một user khác có tên là whales. Thực hiện lệnh như sau:
 
-'''
+**chown whales test.txt**
 
-chown whales test.txt
-
-'''
-
-Để kiểm tra thay đổi có được thực thi, bạn có thể dùng lại lệnh ls -l. Output sẽ hiện lên như sau:
-
--rw-r--r-- 1 whales root 0 Feb 20 17:45 chownSample.txt
 Lệnh trên có thể chỉnh một chút để thay đổi quyền group owner, như sau:
 
-chown user[:group] filename(s)
-Lấy ví dụ trên nếu bạn muốn đổi group owner của chownSample.txt thành group aquatic, vậy lệnh sẽ cần được thực thi như sau:
+**chown user[:group] filename(s)**
+Lấy ví dụ trên nếu bạn muốn đổi group owner của test.txt thành group test, vậy lệnh sẽ cần được thực thi như sau:
 
-chown whales:aquatic chownSample.txt
-Để kiểm tra file đã được đổi thành công chưa, bạn dùng lại lệnh ls -l. Kết quả sẽ như sau:
+chown test:test test.txt
 
--rw-r--r-- 1 whales aquatic 0 Feb 20 17:50 chownSample.txt
 Nếu chỉ có group cần thay đổi, mà giữ nguyên owner, thì bạn gõ lệnh sau như sau:
 
-chown :aquatic chownSample.txt
-Chown có chức năng tương tự như lệnh chgrp khi bạn không đưa ra thông tin owner.
-
-Tóm lại, cấu trúc của lệnh chown command với các tùy chọn là:
+**chown :test test.txt**
 
 chown [OPTIONS] [USER] [:GROUP] filename(s)
 

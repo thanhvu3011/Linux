@@ -128,10 +128,16 @@ sudo groupdel group1
 ## 1.Chown cho Files – đổi quyền sở hữu của file
 Để thay đổi owner của file (chủ sở hữu của file), lệnh cơ bản sẽ như sau:
 
+'''
 chown user filename(s)
-Lấy ví dụ file trên là chownSample.txt, chúng tôi thay đổi từ user sở hữu là root sang một user khác có tên là whales. Thực hiện lệnh như sa:
+'''
 
-chown whales chownSample.txt
+Lấy ví dụ file trên là test.txt, chúng tôi thay đổi từ user sở hữu là root sang một user khác có tên là whales. Thực hiện lệnh như sau:
+
+'''
+chown whales test.txt
+'''
+
 Để kiểm tra thay đổi có được thực thi, bạn có thể dùng lại lệnh ls -l. Output sẽ hiện lên như sau:
 
 -rw-r--r-- 1 whales root 0 Feb 20 17:45 chownSample.txt
@@ -152,6 +158,7 @@ Chown có chức năng tương tự như lệnh chgrp khi bạn không đưa ra 
 Tóm lại, cấu trúc của lệnh chown command với các tùy chọn là:
 
 chown [OPTIONS] [USER] [:GROUP] filename(s)
+
 ## 2.Chown cho thư mục – đổi ownership của thư mục
 Chown cũng có thể áp dụng cho thư mục. Thư mục này chỉ chứa files hoặc thư mục hoặc cả hai.
 
@@ -175,6 +182,7 @@ chown [OPTIONS] [USER][:GROUP] file1 file2
 Ví dụ của lệnh trên là:
 
 chown whales:aquatic /tmp/TestUnix/chownSample.txt /tmp/TestUnix
+
 ## 3.Chown cho Links
 Chown command có thể được dùng trên symbolic link và soft link. Symbolic link là liên kết tham chiếu tới vị trí file gốc vật lý đã tồn tại. Lệnh ln được dùng để tạo soft links. Ví dụ như file chownSample.txt, chúng tôi tạo symbolic link bằng lệnh sau::
 
@@ -197,7 +205,8 @@ Tại đây nếu bạn sử dụng command ls -l, vậy output sẽ như sau:
 
 -rw-r--r--  1 whales root  0 Feb 19 22:01 chownSample.txt
 lrwxr-xr-x  1 whales root  5 Feb 19 7 22:01 symlink -> chownSample.txt
-Sử dụng chown đệ quy (recursive)
+
+## 4.Sử dụng chown đệ quy (recursive)
 Chown command áp dụng lên thư mục, tuy nhiên, nếu dùng thông thường thì không áp dụng được cho file và thư mục con bên trong thư mục áp dụng. Vậy để thay đổi ownership cho toàn bộ thư mục con và file bên trong thư mục đó, chúng ta cần thực hiện lệnh một cách đệ quy.
 
 Rất đơn giản, chúng ta chỉ cần thêm tùy chọn -R khi chạy lệnh, kết quả sẽ như sau:

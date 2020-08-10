@@ -86,7 +86,9 @@ Trong đó u là quyền của user sở hữu của tệp hay file
          o là quyền của các user khác
 Ví dụ: 
 chmod u=rx testfiles
+
 chmod g=rw testfiles
+
 chmod o=rw testfiles
 
 Bạn có thể sửa đổi quyền cho nhiều lớp, chẳng hạn như ví dụ này cho chủ sở hữu có quyền đọc/ghi/thực thi nhưng nhóm và các người dùng khác chỉ có quyền đọc/thực thi:

@@ -68,6 +68,17 @@ kiểu số: cũng giống như ở trên (644).
 - Kiểu số:
 Như đã giải thích ở trên
 Ví dụ: chmod 777 test
+Chmod 644 có nghĩa là gì?
+Việc đặt quyền của file thành 644 cho phép chủ sở hữu có thể truy cập và sửa đổi file theo cách họ muốn, trong khi mọi người dùng khác chỉ có thể truy cập mà không thể sửa đổi và không ai có thể thực thi file ngay cả chủ sở hữu. Đây là cài đặt lý tưởng cho những file có thể truy cập công khai vì nó duy trì cân bằng giữa sự linh hoạt và tính bảo mật.
+ 
+Chmod 755 có nghĩa là gì?
+Đặt quyền của file thành 755 về cơ bản giống như 644, ngoại trừ mọi người đều có quyền thực thi. Quyền này chủ yếu được sử dụng cho các thư mục có thể truy cập công khai, vì cần có quyền thực thi để thực hiện thay đổi đối với thư mục.
+
+Chmod 555 có nghĩa là gì?
+Việc đặt quyền của file thành 555 làm cho file không thể bị sửa đổi bởi bất kỳ ai, ngoại trừ superuser (siêu người dùng) của hệ thống. Quyền này không thường được sử dụng như 644, nhưng việc biết về nó vẫn rất quan trọng, vì cài đặt quyền chỉ đọc ngăn ngừa các thay đổi ngẫu nhiên và/hoặc giả mạo.
+
+Chmod 777 có nghĩa là gì?
+Đặt quyền truy cập file thành 777 cho phép mọi người có thể làm bất cứ điều gì họ muốn với file. Đây là một rủi ro bảo mật rất lớn, đặc biệt là trên các máy chủ web! Theo nghĩa đen, bất cứ ai cũng có thể truy cập file, sửa đổi theo cách họ muốn và thực thi nó trên hệ thống. Bạn có thể tưởng tượng thiệt hại tiềm tàng nếu một kẻ lừa đảo nhúng tay vào file này.
 
 - Kiểu ugo:
 Trong đó u là quyền của user sở hữu của tệp hay file

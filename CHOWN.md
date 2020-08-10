@@ -42,11 +42,19 @@ nv1:$1$T4CJrUJC$hfkHtryc5TprrlKAqGNAr/:15013:0:99999:7:::
   1: không gia hạn đổi passwd
 – ngày hết hạn của passwd 
 ##2.3 /etc/group: Lưu thông tin của group
+Thông tin 1 group trong file /etc/group như sau:
+
+ [Group name] : [Group password] : [GID] : [Group members]
+
+ Ví dụ : 
+ ![alt](https://i.imgur.com/BMMscbk.png)
+
 
 #3.Quản lý user và group
 ##3.1 Quản lý user
 - useradd: tạo user
--c: comment (chú thích)
+Các option:
+-c: comment, tạo bí danh (chú thích)
 -d: home directory (thư mục cá nhân)
 -G: đưa user vào group
 -M: không tạo thư mục cá nhân

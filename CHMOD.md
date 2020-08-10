@@ -48,12 +48,13 @@ Command này được dùng để đổi quyền của một file hoặc thư m�
 |Loại|	Giải thích|
 |-----|-----------|
 |owner|	Người dùng đã tạo thành file hoặc thư mục đó|
-|group|	Tất cả người dùng thuộc cùng một group|
+|group|	Tất cả người dùng thuộc cùng một group với người tạo ra file hoặc thư mục đó|
 |others|Tất cả người dùng khác, không phải owner hoặc những người dùng trong group.|
 
 Nếu bạn muốn loại user nào có quyền nào với file hoặc folder, thì bạn có thể thực thi lệnh chmod để điều khiển việc này theo ý bạn.Cấu trúc sử dụng lệnh này là:
 
 chmod (tùy chọn) (biểu diễn phân quyền) (tên file hoặc thư mục)
+
 Trong đó, mục (tùy chọn) là không bắt buộc, bao gồm các tùy chọn sau:
 -v: hiển thị báo cáo sau khi chạy lệnh. Nếu bạn chmod nhiều file/folder cùng lúc thì cứ mỗi lần nó đổi quyền của 1 file/folder xong là sẽ hiện báo cáo.
 -c: giống như trên, nhưng chỉ hiện khi nó đã làm xong tất cả.
@@ -66,8 +67,10 @@ kiểu ugo: kiểu này sẽ phân quyền cho từng đối tượng phân quy�
 kiểu số: cũng giống như ở trên (644).
 
 - Kiểu số:
+
 Như đã giải thích ở trên
 Ví dụ: chmod 777 test
+
 Chmod 644 có nghĩa là gì?
 Việc đặt quyền của file thành 644 cho phép chủ sở hữu có thể truy cập và sửa đổi file theo cách họ muốn, trong khi mọi người dùng khác chỉ có thể truy cập mà không thể sửa đổi và không ai có thể thực thi file ngay cả chủ sở hữu. Đây là cài đặt lý tưởng cho những file có thể truy cập công khai vì nó duy trì cân bằng giữa sự linh hoạt và tính bảo mật.
  
@@ -81,9 +84,9 @@ Chmod 777 có nghĩa là gì?
 Đặt quyền truy cập file thành 777 cho phép mọi người có thể làm bất cứ điều gì họ muốn với file. Đây là một rủi ro bảo mật rất lớn, đặc biệt là trên các máy chủ web! Theo nghĩa đen, bất cứ ai cũng có thể truy cập file, sửa đổi theo cách họ muốn và thực thi nó trên hệ thống. Bạn có thể tưởng tượng thiệt hại tiềm tàng nếu một kẻ lừa đảo nhúng tay vào file này.
 
 - Kiểu ugo:
-Trong đó u là quyền của user sở hữu của tệp hay file
-         g là quyền của các user thuộc group sở hữu tệp hay file
-         o là quyền của các user khác
+Trong đó: u là quyền của user sở hữu của tệp hay file
+          g là quyền của các user thuộc group sở hữu tệp hay file
+          o là quyền của các user khác
 Ví dụ: 
 chmod u=rx testfiles
 
@@ -92,15 +95,20 @@ chmod g=rw testfiles
 chmod o=rw testfiles
 
 Bạn có thể sửa đổi quyền cho nhiều lớp, chẳng hạn như ví dụ này cho chủ sở hữu có quyền đọc/ghi/thực thi nhưng nhóm và các người dùng khác chỉ có quyền đọc/thực thi:
+
 '''
 chmod u=rwx,g=rw,o=rw testfile
 '''
+
 Nhưng lợi ích của việc sử dụng kiểu ugo sẽ được thấy rõ khi bạn chỉ muốn thêm hoặc xóa quyền cho một hành động cụ thể đối với một lớp.
 Ví dụ, lệnh sau thêm quyền thực thi cho chủ sở hữu file:
+
 '''
 chmod u+x testfiles
+
 '''
 Và lệnh này loại bỏ quyền ghi và thực thi cho người dùng khác:
+
 '''
 chmod o-wx testfiles
 '''

@@ -47,4 +47,4 @@ Mặc dù là có 12 loại unit file trong systemd, tuy nhiên có lẽ service
 Ba tùy chọn trên sẽ được sử dụng khi hệ thống đang hoạt động, tuy nhiên systemctl cũng cung cấp 2 tùy chọn khác để điều khiển việc hoạt động của service từ lúc khởi động hệ thống:
 
 - enable: service sẽ được khởi động cùng hệ thống
-= disable: service sẽ không được khởi động cùng hệ thống
+- disable: service sẽ không được khởi động cùng hệ thống

@@ -38,11 +38,15 @@ Tất cả các chương trình được quản lý bởi **systemd** đều đ�
 - scope (quy định không gian hoạt động)
 
 ## Service
-Mặc dù là có 12 loại unit file trong systemd, tuy nhiên có lẽ service là loại thường được quan tâm nhất. Loại này sẽ được khởi động khi bật máy và luôn chạy ở chế độ nền (daemon hoặc background) Các service thường sẽ được cấu hình trong các file riêng biệt và được quản lý thông qua câu lệnh systemctl Ta có thể sử dụng câu lệnh sau để xem các service đã được kích hoạt bởi hệ thống: *systemctl list-units | grep -e '.service'* hoặc *systemctl -t service* Bộ ba tùy chọn quen thuộc của systemctl sẽ dùng khi muốn bật/tắt một service
+Mặc dù là có 12 loại unit file trong systemd, tuy nhiên có lẽ service là loại thường được quan tâm nhất. Loại này sẽ được khởi động khi bật máy và luôn chạy ở chế độ nền (daemon hoặc background) Các service thường sẽ được cấu hình trong các file riêng biệt và được quản lý thông qua câu lệnh systemctl 
+
+Ta có thể sử dụng câu lệnh sau để xem các service đã được kích hoạt bởi hệ thống: *systemctl list-units | grep -e '.service'* hoặc *systemctl -t service*
+
+Bộ ba tùy chọn quen thuộc của systemctl sẽ dùng khi muốn bật/tắt một service
 
 - start: bật service
 - stop: tắt service
-= restart: tắt service rồi bật lại (ngoài ra còn có reload để tải lại file cấu hình tuy nhiên chỉ có 1 số chương trình hỗ trợ như Apache/Nginx ...) 
+- restart: tắt service rồi bật lại (ngoài ra còn có reload để tải lại file cấu hình tuy nhiên chỉ có 1 số chương trình hỗ trợ như Apache/Nginx ...) 
 
 Ba tùy chọn trên sẽ được sử dụng khi hệ thống đang hoạt động, tuy nhiên systemctl cũng cung cấp 2 tùy chọn khác để điều khiển việc hoạt động của service từ lúc khởi động hệ thống:
 

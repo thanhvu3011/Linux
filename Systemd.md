@@ -131,3 +131,7 @@ Bởi vì điều này, chỉ có một số ít các đơn vị có thể đư�
 - Alias=: Chỉ thị này cho phép các đơn vị được kích hoạt dưới một tên khác. Trong số các ứng dụng khác, điều này cho phép cung cấp các chức năng có sẵn, để các đơn vị có liên quan có thể tìm bất kỳ nhà cung cấp của tên aliased chung.
 - Also=: Chỉ thị này cho phép các đơn vị để được kích hoạt hay vô hiệu hóa như là một tập. Đơn vị đó phải luôn luôn có sẵn khi đơn vị này đang hoạt động có thể được liệt kê ở đây hỗ trợ. Họ sẽ được quản lý như một nhóm cho các nhiệm vụ lắp đặt.
 - DefaultInstance=: Đối với đơn vị mẫu (bảo hiểm sau này) mà có thể sản xuất các trường hợp đơn vị có tên không thể đoán trước, điều này có thể được sử dụng như một giá trị dự phòng cho tên nếu một tên thích hợp không được cung cấp.
+
+3. Unit-Specific Section Directives
+Ởgiữa hai phần trước, bạn có thể sẽ tìm đơn vị phần loại cụ thể (unit type-specific). Hầu hết các loại đơn vị cung cấp các chỉ thị mà chỉ áp dụng cho các loại hình cụ thể của họ.
+Các loại đơn vị thiết bị, mục tiêu, ảnh chụp, và phạm vi không có chỉ thị đơn vị cụ thể, và do đó không có phần liên quan cho loại hình của họ.
